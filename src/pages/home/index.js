@@ -1,37 +1,33 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import MyCalendar from '../../components/calendar';
 import RemindersList from '../../components/remindersList';
 import { Containers } from './styles';
 import MyModal from '../../components/modal';
+import { addReminder } from './duck';
 
 const HomePage = () => {
+  const { reminders } = useSelector((state) => state.calendar);
+  const dispatch = useDispatch();
   const [modalIsOpen, setIsOpen] = useState(false);
-  const reminders = [
-    {
-      start: new Date(),
-      end: new Date(),
-      title: 'Aniversário Yasmin'
-    },
-    {
-      start: new Date(),
-      end: new Date(),
-      title: 'Aniversário Daniel'
-    }
-  ];
 
-  function closeModal() {
+  function _closeModal() {
     setIsOpen(false);
   }
 
-  function openModal() {
+  function _openModal() {
     setIsOpen(true);
+  }
+
+  function _addReminder({ date, id, title }) {
+    dispatch(addReminder({ date, id, title }));
   }
 
   return (
     <>
       <h1>Calendar and reminders</h1>
-      <button onClick={openModal}>Add Reminder</button>
+      <button onClick={_openModal}>Add Reminder</button>
       <Containers.Root>
         <Containers.Calendar>
           <MyCalendar reminders={reminders} />
@@ -40,7 +36,11 @@ const HomePage = () => {
           <RemindersList reminders={reminders} />
         </Containers.Reminders>
       </Containers.Root>
-      <MyModal isOpen={modalIsOpen} closeModal={closeModal} />
+      <MyModal
+        onSave={_addReminder}
+        isOpen={modalIsOpen}
+        closeModal={_closeModal}
+      />
     </>
   );
 };

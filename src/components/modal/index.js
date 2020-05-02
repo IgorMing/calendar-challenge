@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import TimePicker from 'react-time-picker';
+import { v4 as uuidv4 } from 'uuid';
 
 import { CloseButton, Form } from './styles';
 import MyDatePicker from '../datePicker';
@@ -27,9 +28,13 @@ const MyModal = ({ onSave, isOpen, closeModal }) => {
 
   function _onSave(e) {
     e.preventDefault();
-    console.log({ text, date, time });
     const hydratedDate = hydrateDate(date, time);
-    console.log({ hydratedDate });
+
+    onSave({ date: hydratedDate, title: text, id: uuidv4() });
+    setText('');
+    setDate(new Date());
+    setTime(getFormatedTime());
+    closeModal();
   }
 
   return (
@@ -43,7 +48,7 @@ const MyModal = ({ onSave, isOpen, closeModal }) => {
       <h2>Add a new reminder</h2>
       <Form onSubmit={_onSave}>
         <div className="field">
-          <label htmlFor="text-reminder">Description</label>
+          <label htmlFor="text-reminder">Title</label>
           <textarea
             id="text-reminder"
             rows={3}
