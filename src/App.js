@@ -2,14 +2,12 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import store from './redux/store';
-import Calendar from './pages/calendar';
-import Reminders from './pages/reminders';
+import Home from './pages/home';
 
 function App() {
   return (
     <Provider store={store}>
-      <Calendar />
-      <Reminders />
+      <Home />
     </Provider>
   );
 }
