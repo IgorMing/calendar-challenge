@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
+import TimePicker from 'react-time-picker';
 
 import { CloseButton, Form } from './styles';
 import MyDatePicker from '../datePicker';
+import { getFormatedTime, hydrateDate } from './helpers';
 
 const customStyles = {
   content: {
@@ -21,8 +23,13 @@ const customStyles = {
 const MyModal = ({ onSave, isOpen, closeModal }) => {
   const [text, setText] = useState('');
   const [date, setDate] = useState(new Date());
-  function _onSave() {
-    onSave();
+  const [time, setTime] = useState(getFormatedTime());
+
+  function _onSave(e) {
+    e.preventDefault();
+    console.log({ text, date, time });
+    const hydratedDate = hydrateDate(date, time);
+    console.log({ hydratedDate });
   }
 
   return (
@@ -34,23 +41,27 @@ const MyModal = ({ onSave, isOpen, closeModal }) => {
     >
       <CloseButton onClick={closeModal} />
       <h2>Add a new reminder</h2>
-      <Form>
+      <Form onSubmit={_onSave}>
         <div className="field">
           <label htmlFor="text-reminder">Description</label>
           <textarea
             id="text-reminder"
-            rows={2}
+            rows={3}
             cols={50}
             maxLength={30}
             onChange={(e) => setText(e.target.value)}
-          >
-            {text}
-          </textarea>
+            value={text}
+          />
         </div>
         <div className="field">
           <label>Day</label>
           <MyDatePicker selected={date} onChange={setDate} />
         </div>
+        <div className="field">
+          <label>Time</label>
+          <TimePicker value={time} disableClock onChange={setTime} />
+        </div>
+        <input type="submit" value="Create" />
       </Form>
     </Modal>
   );

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import moment from 'moment';
 
 import MyCalendar from '../../components/calendar';
 import RemindersList from '../../components/remindersList';
@@ -10,13 +9,13 @@ const HomePage = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const reminders = [
     {
-      start: moment().toDate(),
-      end: moment().toDate(),
+      start: new Date(),
+      end: new Date(),
       title: 'Aniversário Yasmin'
     },
     {
-      start: moment().toDate(),
-      end: moment().toDate(),
+      start: new Date(),
+      end: new Date(),
       title: 'Aniversário Daniel'
     }
   ];

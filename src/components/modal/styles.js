@@ -30,7 +30,15 @@ export const Form = styled.form`
       padding-right: 5px;
     }
 
+    input[type='text'] {
+      font-size: 16px;
+      width: -webkit-fill-available;
+      border: 1px solid gray;
+      height: 25px;
+    }
+
     > * {
+      font-size: 16px;
       flex: 3;
     }
   }
