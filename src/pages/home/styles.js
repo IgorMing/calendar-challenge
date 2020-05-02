@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export default styled.div`
+  padding-left: 20px;
+  padding-right: 20px;
+`;
+
 export const Containers = {
   Root: styled.div`
     display: flex;
@@ -11,5 +16,9 @@ export const Containers = {
     flex: 1;
     display: flex;
     justify-content: center;
+    background-color: #f6f6b8;
+    border-radius: 10px;
+    margin-left: 20px;
+    width: 100%;
   `
 };

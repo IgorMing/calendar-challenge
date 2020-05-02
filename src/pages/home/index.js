@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import MyCalendar from '../../components/calendar';
 import RemindersList from '../../components/remindersList';
-import { Containers } from './styles';
+import Wrapper, { Containers } from './styles';
 import MyModal from '../../components/modal';
 import { addReminder } from './duck';
 
@@ -25,7 +25,7 @@ const HomePage = () => {
   }
 
   return (
-    <>
+    <Wrapper>
       <h1>Calendar and reminders</h1>
       <button onClick={_openModal}>Add Reminder</button>
       <Containers.Root>
@@ -41,7 +41,7 @@ const HomePage = () => {
         isOpen={modalIsOpen}
         closeModal={_closeModal}
       />
-    </>
+    </Wrapper>
   );
 };
 

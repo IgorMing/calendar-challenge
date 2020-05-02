@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { CloseButton, Form } from './styles';
 import MyDatePicker from '../datePicker';
-import { getFormatedTime, hydrateDate } from './helpers';
+import { getFormatedTime, hydrateDate } from '../../helpers/date_helper';
 
 const customStyles = {
   content: {
