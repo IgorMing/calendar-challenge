@@ -1,31 +1,29 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+import moment from 'moment';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
-import { addReminder } from './duck';
+const localizer = momentLocalizer(moment);
 
 const HomePage = () => {
-  const INITIAL_VALUE = '';
-  const [reminder, setReminder] = useState(INITIAL_VALUE);
-  const dispatch = useDispatch();
-
-  function _addReminder() {
-    if (!reminder) {
-      return;
+  const events = [
+    {
+      start: moment().toDate(),
+      end: moment().add(1, 'days').toDate(),
+      title: 'Some title'
     }
-
-    dispatch(addReminder(reminder));
-    setReminder(INITIAL_VALUE);
-  }
-
-  function _handleChange(e) {
-    setReminder(e.target.value);
-  }
+  ];
 
   return (
-    <div>
-      <h1>Home page</h1>
-      <input type="text" onChange={_handleChange} value={reminder} />
-      <button onClick={_addReminder}>Add Reminder</button>
+    <div className="App">
+      <h1>Calendar and reminders</h1>
+      <Calendar
+        localizer={localizer}
+        defaultDate={new Date()}
+        defaultView="month"
+        events={events}
+        style={{ height: '80vh' }}
+      />
     </div>
   );
 };
