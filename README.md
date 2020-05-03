@@ -1,8 +1,15 @@
 # Calendar Challenge
 
+TODO List
+
+- [ ] add icons to edit and delete buttons
+- [ ] order reminders in calendar by time
+- [ ] order reminders in reminders list by date and time
+- [ ] save reminders in any storage
+
 ## Mandatory Features
 
-- [ ] Ability to add a new "reminder" (max 30 chars) for a user entered day and time. Also, include a city.
+- [x] Ability to add a new "reminder" (max 30 chars) for a user entered day and time. Also, include a city.
 - [ ] Display reminders on the calendar view in the correct time order.
 - [ ] Allow the user to select color when creating a reminder and display it appropriately.
 - [ ] Ability to edit reminders – including changing text, city, day, time and color.

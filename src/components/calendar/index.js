@@ -18,7 +18,7 @@ const MyCalendar = ({ reminders }) => {
       defaultDate={new Date()}
       defaultView="month"
       events={hydrateDataToCalendar(reminders)}
-      style={{ height: '80vh' }}
+      style={{ height: '70vh' }}
     />
   );
 };

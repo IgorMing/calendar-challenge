@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Container } from './styles';
+import { FiEdit, FiTrash2 } from 'react-icons/fi';
 
 const Reminder = ({ date, title }) => {
   return (
@@ -15,8 +16,12 @@ const Reminder = ({ date, title }) => {
           <span className="city">Campinas, SP</span>
         </div>
         <div className="right-box">
-          <span>Edit</span>
-          <span>Del</span>
+          <div className="button">
+            <FiEdit onClick={null} />
+          </div>
+          <div className="button">
+            <FiTrash2 onClick={null} />
+          </div>
         </div>
       </div>
     </Container>

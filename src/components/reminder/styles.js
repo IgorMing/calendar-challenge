@@ -41,6 +41,10 @@ export const Container = styled.div`
       justify-content: space-evenly;
       align-items: flex-end;
       flex: 1;
+
+      .button {
+        cursor: pointer;
+      }
     }
   }
 `;
