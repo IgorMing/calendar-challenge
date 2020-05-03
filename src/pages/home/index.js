@@ -6,9 +6,10 @@ import RemindersList from '../../components/remindersList';
 import Wrapper, { Containers, AddButton } from './styles';
 import MyModal from '../../components/modal';
 import { saveReminder } from './duck';
+import { orderedReminders } from './selectors';
 
 const HomePage = () => {
-  const { reminders } = useSelector((state) => state.calendar);
+  const reminders = useSelector(orderedReminders);
   const dispatch = useDispatch();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedReminder, setSelectedReminder] = useState();

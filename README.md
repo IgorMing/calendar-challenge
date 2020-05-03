@@ -2,15 +2,16 @@
 
 TODO List
 
-- [ ] add icons to edit and delete buttons
-- [ ] order reminders in calendar by time
-- [ ] order reminders in reminders list by date and time
+- [x] add icons to edit and delete buttons
+- [x] order reminders in calendar by time
+- [x] order reminders in reminders list by date and time
+- [ ] add color picker into modal
 - [ ] save reminders in any storage
 
 ## Mandatory Features
 
 - [x] Ability to add a new "reminder" (max 30 chars) for a user entered day and time. Also, include a city.
-- [ ] Display reminders on the calendar view in the correct time order.
+- [x] Display reminders on the calendar view in the correct time order.
 - [ ] Allow the user to select color when creating a reminder and display it appropriately.
 - [ ] Ability to edit reminders – including changing text, city, day, time and color.
 - [ ] Add a weather service call from a free API such as [​Open Weather Map​](https://openweathermap.org/forecast16), and get the
@@ -19,6 +20,6 @@ TODO List
 
 ## Bonus (Optional)
 
-- [ ] Expand the calendar to support more than the current month.
+- [x] Expand the calendar to support more than the current month.
 - [ ] Properly handle overflow when multiple reminders appear on the same date.
 - [ ] Functionality to delete one or ALL the reminders for a specific day

@@ -10,6 +10,10 @@ export const AddButton = styled.button`
   padding: 15px 30px;
   border-radius: 10px;
   cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
 `;
 
 export const Containers = {
