@@ -1,12 +1,30 @@
 # Calendar Challenge
 
-TODO List
+The code challenge made to schedule some reminders into the calendar.
 
-- [x] add icons to edit and delete buttons
-- [x] order reminders in calendar by time
-- [x] order reminders in reminders list by date and time
-- [x] add color picker into modal
-- [x] save reminders in any storage
+## Getting started
+
+To run the app, make sure that you have all the required tools installed [here](https://reactjs.org/docs/create-a-new-react-app.html)
+
+First, clone this repository
+
+```
+$ git clone git@github.com:IgorMing/calendar-challenge.git
+```
+
+After that, let's navigate into it and install all the dependencies
+
+```
+$ yarn
+# or
+$ npm i
+```
+
+That's all! Now you can run the application
+
+```
+$ yarn start
+```
 
 ## Mandatory Features
 
@@ -21,5 +39,18 @@ TODO List
 ## Bonus (Optional)
 
 - [x] Expand the calendar to support more than the current month.
-- [ ] Properly handle overflow when multiple reminders appear on the same date.
+- [x] Properly handle overflow when multiple reminders appear on the same date.
 - [ ] Functionality to delete one or ALL the reminders for a specific day
+
+## Extra Features
+
+- [x] Add an extra list on the right side showing all the scheduled reminders, sorted by Date asc
+- [x] All the reminders interaction _(get, add, edit, delete)_ are being saved into local storage. So you can reload the page and still keep seeing the data
+
+> **Important note:** I wasn't able to implement the weather based on the filled city, because the API wasn't responding as expected. I received error 401, then, I tried to put the example request directly, which was also not succeeded (for CORS problems). I added an image below showing the error
+> ![](./assets/api_failure.png)
+> If you wish, see the corresponding [URL](https://openweathermap.org/faq#error401) to check possible reasons for that failure.
+
+I hope you liked it.
+
+Thank you!
