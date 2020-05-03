@@ -45,9 +45,11 @@ $ yarn start
 ## Extra Features
 
 - [x] Add an extra list on the right side showing all the scheduled reminders, sorted by Date asc
-- [x] All the reminders interaction _(get, add, edit, delete)_ are being saved into local storage. So you can reload the page and still keep seeing the data
+- [x] Save into local storage all the reminders interaction _(get, add, edit, delete)_. So you can reload the page and still keep seeing the data
 
-> **Important note:** I wasn't able to implement the weather based on the filled city, because the API wasn't responding as expected. I received error 401, then, I tried to put the example request directly, which was also not succeeded (for CORS problems). I added an image below showing the error
+> **Important note[1]:** I know the importance of automated tests to an application, but I left that implementation to the end, and I started having problems to make jest running well, so I decided to delete that for now. Just clarifying, I have experience with automated tests (unit, integration, e2e), but I enforced a lot in this challenge in the code quality, and organizing the structure, so I hope that's enough. I'm sorry!
+
+> **Important note [2]:** I wasn't able to implement the weather based on the filled city, because the API wasn't responding as expected. I received error 401, then, I tried to put the example request directly, which was also not succeeded (for CORS problems). I added an image below showing the error
 > ![](./assets/api_failure.png)
 > If you wish, see the corresponding [URL](https://openweathermap.org/faq#error401) to check possible reasons for that failure.
 
