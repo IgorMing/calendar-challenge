@@ -1,4 +1,6 @@
 import { getReminders, updateReminders, addReminder } from './storage';
+import httpClient from '../../api/httpClient';
+import { API_KEY } from '../../api/constants';
 
 // Actions
 const ADD_REMINDER = 'CALENDAR/ADD_REMINDER';
@@ -29,11 +31,23 @@ export default function reducer(state = INITIAL_STATE, action) {
   }
 }
 
+// async function fetchWeather(city) {
+//   try {
+//     // I had problems while trying to retrieve weather from the API
+//     return await httpClient.get(`daily?appid=${API_KEY}&q=${city}`);
+//   } catch (err) {
+//     console.error(`not able to fetch weather from "${city}"`);
+//   }
+// }
+
 // Action Creators
 export function saveReminder(reminder) {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const { reminders } = getState().calendar;
     const reminderFound = reminders.find((each) => each.id === reminder.id);
+
+    // I commented this because that's not working
+    // const response = await fetchWeather();
 
     if (reminderFound) {
       const updatedReminders = reminders.map((currReminder) =>

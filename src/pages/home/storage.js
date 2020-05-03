@@ -6,12 +6,10 @@ export function getReminders() {
     ...reminder,
     date: new Date(reminder.date)
   }));
-  console.log('get', remindersWithDate.length);
   return remindersWithDate || [];
 }
 
 export function updateReminders(reminders) {
-  console.log('length', reminders.length);
   const remindersWithTimestamp = reminders.map((reminder) => ({
     ...reminder,
     date: reminder.date.getTime()
