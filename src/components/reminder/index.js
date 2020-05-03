@@ -1,14 +1,15 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import { Container } from './styles';
+import { ColorBox, Container } from './styles';
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
 
-const Reminder = ({ city, date, title }) => {
+const Reminder = ({ city, color, date, title }) => {
   return (
     <Container>
       <div className="title">
         <h3>{title}</h3>
+        <ColorBox color={color} />
       </div>
       <div className="info">
         <div className="left-box">
@@ -29,6 +30,7 @@ const Reminder = ({ city, date, title }) => {
 };
 
 Reminder.propTypes = {
+  color: PropTypes.string.isRequired,
   city: PropTypes.string,
   date: PropTypes.instanceOf(Date),
   title: PropTypes.string

@@ -15,6 +15,7 @@ const HomePage = () => {
 
   function _closeModal() {
     setIsOpen(false);
+    setSelectedReminder();
   }
 
   function _openModal() {
@@ -27,6 +28,7 @@ const HomePage = () => {
   }
 
   function _onSelectReminder(reminder) {
+    console.log(reminder);
     setSelectedReminder(reminder);
     _openModal();
   }

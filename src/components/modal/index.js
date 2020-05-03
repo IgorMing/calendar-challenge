@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import TimePicker from 'react-time-picker';
 import { v4 as uuidv4 } from 'uuid';
 import { MdClose } from 'react-icons/md';
+import { SwatchesPicker } from 'react-color';
 
 import { CloseButton, Form } from './styles';
 import MyDatePicker from '../datePicker';
@@ -28,18 +29,23 @@ const MyModal = ({ onSave, isOpen, closeModal, reminder }) => {
   const [city, setCity] = useState('');
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState(getFormattedTime());
+  const [color, setColor] = useState('#fff');
   const isEdit = Object.keys(reminder).length;
 
   useEffect(() => {
     if (isEdit) {
+      setColor(reminder.color);
       setTitle(reminder.title);
       setCity(reminder.city);
       setDate(reminder.date);
       setTime(getFormattedTime(reminder.date));
     }
+
+    return _clearFields;
   }, [reminder]);
 
   function _clearFields() {
+    setColor('#fff');
     setTitle('');
     setCity('');
     setDate(new Date());
@@ -48,13 +54,16 @@ const MyModal = ({ onSave, isOpen, closeModal, reminder }) => {
 
   function _onSave(e) {
     e.preventDefault();
-    console.log({ title, city, date, time });
     const hydratedDate = hydrateDate(date, time);
     const id = reminder.id || uuidv4();
 
-    onSave({ date: hydratedDate, title, id, city });
+    onSave({ color, date: hydratedDate, title, id, city });
     _clearFields();
     closeModal();
+  }
+
+  function _changeColor(color) {
+    setColor(color.hex);
   }
 
   function _closeModal() {
@@ -72,7 +81,7 @@ const MyModal = ({ onSave, isOpen, closeModal, reminder }) => {
       contentLabel="Remider Modal"
     >
       <CloseButton onClick={closeModal}>
-        <MdClose color="white" />
+        <MdClose color="white" size={25} />
       </CloseButton>
       <h2>{prefixTitle} reminder</h2>
       <Form onSubmit={_onSave}>
@@ -103,7 +112,18 @@ const MyModal = ({ onSave, isOpen, closeModal, reminder }) => {
           <label>Time</label>
           <TimePicker value={time} disableClock onChange={setTime} />
         </div>
-        <Button type="submit" title={isEdit ? 'Save' : 'Create'} />
+        <div className="field color-container">
+          <label>Color</label>
+          <SwatchesPicker
+            color={color}
+            onChangeComplete={_changeColor}
+            height={150}
+            width={300}
+          />
+        </div>
+        <div className="button-container">
+          <Button type="submit" title={isEdit ? 'Save' : 'Create'} />
+        </div>
       </Form>
     </Modal>
   );

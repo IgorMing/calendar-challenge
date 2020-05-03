@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const ColorBox = styled.div`
+  background-color: ${({ color }) => color};
+  height: 30px;
+  width: 30px;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -13,6 +19,9 @@ export const Container = styled.div`
     border-bottom: 1px solid gray;
     margin-left: 15px;
     margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     h3 {
       font-weight: bold;

@@ -15,14 +15,30 @@ export const CloseButton = styled.div`
 `;
 
 export const Form = styled.form`
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 15px;
+  }
+
+  .color-container {
+    display: flex;
+    justify-content: flex-end;
+
+    .swatches-picker {
+      width: 300px;
+    }
+  }
+
   .field {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding-bottom: 10px;
 
     label {
       flex: 1;
       padding-right: 5px;
+      padding-top: 5px;
     }
 
     input[type='text'] {
