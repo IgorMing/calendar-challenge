@@ -20,8 +20,8 @@ const HomePage = () => {
     setIsOpen(true);
   }
 
-  function _addReminder({ date, id, title }) {
-    dispatch(addReminder({ date, id, title }));
+  function _addReminder(reminder) {
+    dispatch(addReminder(reminder));
   }
 
   return (

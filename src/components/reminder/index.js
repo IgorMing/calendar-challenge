@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Container } from './styles';
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
 
-const Reminder = ({ date, title }) => {
+const Reminder = ({ city, date, title }) => {
   return (
     <Container>
       <div className="title">
@@ -13,7 +13,7 @@ const Reminder = ({ date, title }) => {
       <div className="info">
         <div className="left-box">
           <span className="date">{moment(date).calendar()}</span>
-          <span className="city">Campinas, SP</span>
+          <span className="city">{city}</span>
         </div>
         <div className="right-box">
           <div className="button">
@@ -29,6 +29,7 @@ const Reminder = ({ date, title }) => {
 };
 
 Reminder.propTypes = {
+  city: PropTypes.string,
   date: PropTypes.instanceOf(Date),
   title: PropTypes.string
 };

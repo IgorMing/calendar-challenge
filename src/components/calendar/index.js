@@ -10,7 +10,6 @@ import { hydrateDataToCalendar } from './helper';
 const localizer = momentLocalizer(moment);
 
 const MyCalendar = ({ reminders }) => {
-  console.log({ reminders });
   return (
     <Calendar
       onSelectEvent={(a) => console.log('clicou', a)} // TODO use this to edit an event

@@ -22,25 +22,36 @@ const customStyles = {
 };
 
 const MyModal = ({ onSave, isOpen, closeModal }) => {
-  const [text, setText] = useState('');
+  const [title, setTitle] = useState('');
+  const [city, setCity] = useState('');
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState(getFormatedTime());
+
+  function _clearFields() {
+    setTitle('');
+    setCity('');
+    setDate(new Date());
+    setTime(getFormatedTime());
+  }
 
   function _onSave(e) {
     e.preventDefault();
     const hydratedDate = hydrateDate(date, time);
 
-    onSave({ date: hydratedDate, title: text, id: uuidv4() });
-    setText('');
-    setDate(new Date());
-    setTime(getFormatedTime());
+    onSave({ date: hydratedDate, title, id: uuidv4(), city });
+    _clearFields();
+    closeModal();
+  }
+
+  function _closeModal() {
+    _clearFields();
     closeModal();
   }
 
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={closeModal}
+      onRequestClose={_closeModal}
       style={customStyles}
       contentLabel="Remider Modal"
     >
@@ -54,8 +65,16 @@ const MyModal = ({ onSave, isOpen, closeModal }) => {
             rows={3}
             cols={50}
             maxLength={30}
-            onChange={(e) => setText(e.target.value)}
-            value={text}
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+          />
+        </div>
+        <div className="field">
+          <label>City</label>
+          <input
+            type="text"
+            onChange={(e) => setCity(e.target.value)}
+            value={city}
           />
         </div>
         <div className="field">
