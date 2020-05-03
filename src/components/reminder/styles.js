@@ -4,6 +4,7 @@ export const ColorBox = styled.div`
   background-color: ${({ color }) => color};
   height: 30px;
   width: 30px;
+  border: 1px solid gray;
 `;
 
 export const Container = styled.div`

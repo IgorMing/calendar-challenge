@@ -14,6 +14,7 @@ const MyCalendar = ({ reminders, onSelectReminder }) => {
   function customizeReminderStyle(event) {
     return {
       style: {
+        color: event.color === '#fff' ? '#000' : '#fff',
         backgroundColor: event.color
       }
     };

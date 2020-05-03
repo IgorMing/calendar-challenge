@@ -45,7 +45,7 @@ const HomePage = () => {
           />
         </Containers.Calendar>
         <Containers.Reminders>
-          <RemindersList reminders={reminders} />
+          <RemindersList reminders={reminders} onEdit={_onSelectReminder} />
         </Containers.Reminders>
       </Containers.Root>
       <MyModal

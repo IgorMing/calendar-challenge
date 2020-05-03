@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import { ColorBox, Container } from './styles';
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
 
-const Reminder = ({ city, color, date, title }) => {
+const Reminder = ({ city, color, date, onEdit, title }) => {
   return (
     <Container>
       <div className="title">
         <h3>{title}</h3>
-        <ColorBox color={color} />
+        <ColorBox onClick={onEdit} color={color} />
       </div>
       <div className="info">
         <div className="left-box">
@@ -18,7 +18,7 @@ const Reminder = ({ city, color, date, title }) => {
         </div>
         <div className="right-box">
           <div className="button">
-            <FiEdit onClick={null} />
+            <FiEdit onClick={onEdit} />
           </div>
           <div className="button">
             <FiTrash2 onClick={null} />
@@ -33,6 +33,7 @@ Reminder.propTypes = {
   color: PropTypes.string.isRequired,
   city: PropTypes.string,
   date: PropTypes.instanceOf(Date),
+  onEdit: PropTypes.func.isRequired,
   title: PropTypes.string
 };
 
