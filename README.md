@@ -6,7 +6,7 @@ TODO List
 - [x] order reminders in calendar by time
 - [x] order reminders in reminders list by date and time
 - [x] add color picker into modal
-- [ ] save reminders in any storage
+- [x] save reminders in any storage
 
 ## Mandatory Features
 

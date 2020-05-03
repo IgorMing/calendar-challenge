@@ -1,20 +1,25 @@
+import { getReminders, updateReminders, addReminder } from './storage';
+
 // Actions
 const ADD_REMINDER = 'CALENDAR/ADD_REMINDER';
 const UPDATE_REMINDER = 'CALENDAR/UPDATE_REMINDER';
 
 const INITIAL_STATE = {
-  reminders: []
+  reminders: getReminders()
 };
 
 // Reducer
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case ADD_REMINDER:
+    case ADD_REMINDER: {
+      addReminder(action.payload);
       return {
         ...state,
         reminders: [...state.reminders, action.payload]
       };
+    }
     case UPDATE_REMINDER:
+      updateReminders(action.payload);
       return {
         ...state,
         reminders: action.payload
