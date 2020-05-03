@@ -5,17 +5,6 @@ export default styled.div`
   padding-right: 20px;
 `;
 
-export const AddButton = styled.button`
-  font-size: 20px;
-  padding: 15px 30px;
-  border-radius: 10px;
-  cursor: pointer;
-
-  &:focus {
-    outline: 0;
-  }
-`;
-
 export const Containers = {
   Root: styled.div`
     display: flex;

@@ -8,6 +8,7 @@ import { MdClose } from 'react-icons/md';
 import { CloseButton, Form } from './styles';
 import MyDatePicker from '../datePicker';
 import { getFormattedTime, hydrateDate } from '../../helpers/date_helper';
+import Button from '../button';
 
 const customStyles = {
   content: {
@@ -102,7 +103,7 @@ const MyModal = ({ onSave, isOpen, closeModal, reminder }) => {
           <label>Time</label>
           <TimePicker value={time} disableClock onChange={setTime} />
         </div>
-        <input type="submit" value={isEdit ? 'Save' : 'Create'} />
+        <Button type="submit" title={isEdit ? 'Save' : 'Create'} />
       </Form>
     </Modal>
   );

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import MyCalendar from '../../components/calendar';
-import RemindersList from '../../components/remindersList';
-import Wrapper, { Containers, AddButton } from './styles';
+import { Button, Calendar, RemindersList } from '../../components';
+import Wrapper, { Containers } from './styles';
 import MyModal from '../../components/modal';
 import { saveReminder } from './duck';
 import { orderedReminders } from './selectors';
@@ -35,10 +34,10 @@ const HomePage = () => {
   return (
     <Wrapper>
       <h1>Calendar and reminders</h1>
-      <AddButton onClick={_openModal}>Add Reminder</AddButton>
+      <Button onClick={_openModal} title="Add reminder" />
       <Containers.Root>
         <Containers.Calendar>
-          <MyCalendar
+          <Calendar
             reminders={reminders}
             onSelectReminder={_onSelectReminder}
           />
