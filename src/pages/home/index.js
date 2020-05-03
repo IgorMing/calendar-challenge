@@ -5,7 +5,7 @@ import MyCalendar from '../../components/calendar';
 import RemindersList from '../../components/remindersList';
 import Wrapper, { Containers, AddButton } from './styles';
 import MyModal from '../../components/modal';
-import { addReminder } from './duck';
+import { saveReminder } from './duck';
 
 const HomePage = () => {
   const { reminders } = useSelector((state) => state.calendar);
@@ -22,13 +22,11 @@ const HomePage = () => {
   }
 
   function _addReminder(reminder) {
-    console.log('add reminder', reminder);
-    dispatch(addReminder(reminder));
+    dispatch(saveReminder(reminder));
     setSelectedReminder();
   }
 
   function _onSelectReminder(reminder) {
-    console.log('on select', reminder);
     setSelectedReminder(reminder);
     _openModal();
   }

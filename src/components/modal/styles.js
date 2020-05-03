@@ -12,11 +12,6 @@ export const CloseButton = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-
-  ::after {
-    content: 'X';
-    color: white;
-  }
 `;
 
 export const Form = styled.form`

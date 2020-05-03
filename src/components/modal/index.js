@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import TimePicker from 'react-time-picker';
 import { v4 as uuidv4 } from 'uuid';
+import { MdClose } from 'react-icons/md';
 
 import { CloseButton, Form } from './styles';
 import MyDatePicker from '../datePicker';
@@ -26,16 +27,16 @@ const MyModal = ({ onSave, isOpen, closeModal, reminder }) => {
   const [city, setCity] = useState('');
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState(getFormattedTime());
-  const [loadedData, setLoadedData] = useState(false);
+  const isEdit = Object.keys(reminder).length;
 
-  // Checking if it's not an empty object
-  if (Object.keys(reminder).length && !loadedData) {
-    setTitle(reminder.title);
-    setCity(reminder.city);
-    setDate(reminder.date);
-    setTime(getFormattedTime(reminder.date));
-    setLoadedData(true);
-  }
+  useEffect(() => {
+    if (isEdit) {
+      setTitle(reminder.title);
+      setCity(reminder.city);
+      setDate(reminder.date);
+      setTime(getFormattedTime(reminder.date));
+    }
+  }, [reminder]);
 
   function _clearFields() {
     setTitle('');
@@ -60,6 +61,8 @@ const MyModal = ({ onSave, isOpen, closeModal, reminder }) => {
     closeModal();
   }
 
+  const prefixTitle = isEdit ? 'Edit a' : 'Add a new';
+
   return (
     <Modal
       isOpen={isOpen}
@@ -67,8 +70,10 @@ const MyModal = ({ onSave, isOpen, closeModal, reminder }) => {
       style={customStyles}
       contentLabel="Remider Modal"
     >
-      <CloseButton onClick={closeModal} />
-      <h2>Add a new reminder</h2>
+      <CloseButton onClick={closeModal}>
+        <MdClose color="white" />
+      </CloseButton>
+      <h2>{prefixTitle} reminder</h2>
       <Form onSubmit={_onSave}>
         <div className="field">
           <label htmlFor="text-reminder">Title</label>
@@ -97,7 +102,7 @@ const MyModal = ({ onSave, isOpen, closeModal, reminder }) => {
           <label>Time</label>
           <TimePicker value={time} disableClock onChange={setTime} />
         </div>
-        <input type="submit" value="Create" />
+        <input type="submit" value={isEdit ? 'Save' : 'Create'} />
       </Form>
     </Modal>
   );

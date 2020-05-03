@@ -25,7 +25,7 @@ export default function reducer(state = INITIAL_STATE, action) {
 }
 
 // Action Creators
-export function addReminder(reminder) {
+export function saveReminder(reminder) {
   return (dispatch, getState) => {
     const { reminders } = getState().calendar;
     const reminderFound = reminders.find((each) => each.id === reminder.id);
