@@ -4,7 +4,16 @@ import PropTypes from 'prop-types';
 import { ColorBox, Container } from './styles';
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
 
-const Reminder = ({ city, color, date, onEdit, title }) => {
+const Reminder = ({ city, color, date, onDelete, onEdit, title }) => {
+  function _onDelete() {
+    const response = window.confirm(
+      `Do you really want to delete the reminder "${title}"?`
+    );
+    if (response) {
+      onDelete();
+    }
+  }
+
   return (
     <Container>
       <div className="title">
@@ -21,7 +30,7 @@ const Reminder = ({ city, color, date, onEdit, title }) => {
             <FiEdit onClick={onEdit} />
           </div>
           <div className="button">
-            <FiTrash2 onClick={null} />
+            <FiTrash2 onClick={_onDelete} />
           </div>
         </div>
       </div>
@@ -33,6 +42,7 @@ Reminder.propTypes = {
   color: PropTypes.string.isRequired,
   city: PropTypes.string,
   date: PropTypes.instanceOf(Date),
+  onDelete: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
   title: PropTypes.string
 };

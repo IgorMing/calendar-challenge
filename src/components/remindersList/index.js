@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Container } from './styles';
 import Reminder from '../reminder';
 
-const RemindersList = ({ onEdit, reminders }) => {
+const RemindersList = ({ onDelete, onEdit, reminders }) => {
   return (
     <Container>
       <div>
@@ -12,6 +12,7 @@ const RemindersList = ({ onEdit, reminders }) => {
       </div>
       {reminders.map((reminder) => (
         <Reminder
+          onDelete={() => onDelete(reminder.id)}
           onEdit={() => onEdit(reminder)}
           key={reminder.id}
           {...reminder}
@@ -22,6 +23,7 @@ const RemindersList = ({ onEdit, reminders }) => {
 };
 
 RemindersList.propTypes = {
+  onDelete: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
   reminders: PropTypes.array
 };

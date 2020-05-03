@@ -43,3 +43,22 @@ export function saveReminder(reminder) {
     }
   };
 }
+
+export function deleteReminder(id) {
+  return (dispatch, getState) => {
+    const { reminders } = getState().calendar;
+    const foundIndex = reminders.findIndex((reminder) => reminder.id === id);
+
+    if (foundIndex !== -1) {
+      reminders.splice(foundIndex, 1);
+      const updatedReminders = [...reminders];
+
+      dispatch({
+        type: UPDATE_REMINDER,
+        payload: updatedReminders
+      });
+    } else {
+      console.error(`Id: "${id}" not found into reminders list`);
+    }
+  };
+}

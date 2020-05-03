@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, Calendar, RemindersList } from '../../components';
 import Wrapper, { Containers } from './styles';
 import MyModal from '../../components/modal';
-import { saveReminder } from './duck';
+import { deleteReminder, saveReminder } from './duck';
 import { orderedReminders } from './selectors';
 
 const HomePage = () => {
@@ -27,8 +27,11 @@ const HomePage = () => {
     setSelectedReminder();
   }
 
+  function _onDelete(id) {
+    dispatch(deleteReminder(id));
+  }
+
   function _onSelectReminder(reminder) {
-    console.log(reminder);
     setSelectedReminder(reminder);
     _openModal();
   }
@@ -45,7 +48,11 @@ const HomePage = () => {
           />
         </Containers.Calendar>
         <Containers.Reminders>
-          <RemindersList reminders={reminders} onEdit={_onSelectReminder} />
+          <RemindersList
+            reminders={reminders}
+            onEdit={_onSelectReminder}
+            onDelete={_onDelete}
+          />
         </Containers.Reminders>
       </Containers.Root>
       <MyModal
