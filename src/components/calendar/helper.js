@@ -1,8 +1,15 @@
 export function hydrateDataToCalendar(reminders) {
-  return reminders.map(({ date, id, title }) => ({
+  return reminders.map(({ date, ...rest }) => ({
     start: date,
     end: date,
-    title,
-    id
+    ...rest
   }));
+}
+
+export function hydrateCalendarToModel({ start, ...rest }) {
+  delete rest.end;
+  return {
+    date: start,
+    ...rest
+  };
 }

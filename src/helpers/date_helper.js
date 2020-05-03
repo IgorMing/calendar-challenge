@@ -6,7 +6,7 @@ function getTimeAtoms(stringDate) {
   };
 }
 
-export function getFormatedTime(date = new Date()) {
+export function getFormattedTime(date = new Date()) {
   const timeAtoms = getTimeAtoms(date.toTimeString());
   return `${timeAtoms.hours}:${timeAtoms.minutes}`;
 }

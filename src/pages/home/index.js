@@ -11,6 +11,7 @@ const HomePage = () => {
   const { reminders } = useSelector((state) => state.calendar);
   const dispatch = useDispatch();
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [selectedReminder, setSelectedReminder] = useState();
 
   function _closeModal() {
     setIsOpen(false);
@@ -21,7 +22,15 @@ const HomePage = () => {
   }
 
   function _addReminder(reminder) {
+    console.log('add reminder', reminder);
     dispatch(addReminder(reminder));
+    setSelectedReminder();
+  }
+
+  function _onSelectReminder(reminder) {
+    console.log('on select', reminder);
+    setSelectedReminder(reminder);
+    _openModal();
   }
 
   return (
@@ -30,7 +39,10 @@ const HomePage = () => {
       <AddButton onClick={_openModal}>Add Reminder</AddButton>
       <Containers.Root>
         <Containers.Calendar>
-          <MyCalendar reminders={reminders} />
+          <MyCalendar
+            reminders={reminders}
+            onSelectReminder={_onSelectReminder}
+          />
         </Containers.Calendar>
         <Containers.Reminders>
           <RemindersList reminders={reminders} />
@@ -40,6 +52,7 @@ const HomePage = () => {
         onSave={_addReminder}
         isOpen={modalIsOpen}
         closeModal={_closeModal}
+        reminder={selectedReminder}
       />
     </Wrapper>
   );

@@ -1,5 +1,6 @@
 // Actions
 const ADD_REMINDER = 'CALENDAR/ADD_REMINDER';
+const UPDATE_REMINDER = 'CALENDAR/UPDATE_REMINDER';
 
 const INITIAL_STATE = {
   reminders: []
@@ -13,6 +14,11 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
         reminders: [...state.reminders, action.payload]
       };
+    case UPDATE_REMINDER:
+      return {
+        ...state,
+        reminders: action.payload
+      };
     default:
       return state;
   }
@@ -20,8 +26,20 @@ export default function reducer(state = INITIAL_STATE, action) {
 
 // Action Creators
 export function addReminder(reminder) {
-  return {
-    type: ADD_REMINDER,
-    payload: reminder
+  return (dispatch, getState) => {
+    const { reminders } = getState().calendar;
+    const reminderFound = reminders.find((each) => each.id === reminder.id);
+
+    if (reminderFound) {
+      const updatedReminders = reminders.map((currReminder) =>
+        currReminder.id === reminder.id ? reminder : currReminder
+      );
+      dispatch({
+        type: UPDATE_REMINDER,
+        payload: updatedReminders
+      });
+    } else {
+      dispatch({ type: ADD_REMINDER, payload: reminder });
+    }
   };
 }

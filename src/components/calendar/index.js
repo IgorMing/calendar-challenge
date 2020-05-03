@@ -5,14 +5,14 @@ import moment from 'moment';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './override_style.css';
-import { hydrateDataToCalendar } from './helper';
+import { hydrateDataToCalendar, hydrateCalendarToModel } from './helper';
 
 const localizer = momentLocalizer(moment);
 
-const MyCalendar = ({ reminders }) => {
+const MyCalendar = ({ reminders, onSelectReminder }) => {
   return (
     <Calendar
-      onSelectEvent={(a) => console.log('clicou', a)} // TODO use this to edit an event
+      onSelectEvent={(data) => onSelectReminder(hydrateCalendarToModel(data))}
       localizer={localizer}
       defaultDate={new Date()}
       defaultView="month"
@@ -23,11 +23,13 @@ const MyCalendar = ({ reminders }) => {
 };
 
 MyCalendar.propTypes = {
-  reminders: PropTypes.array
+  reminders: PropTypes.array,
+  onSelectReminder: PropTypes.func
 };
 
 MyCalendar.defaultProps = {
-  reminders: []
+  reminders: [],
+  onSelectReminder: () => {}
 };
 
 export default MyCalendar;

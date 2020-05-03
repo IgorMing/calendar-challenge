@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { CloseButton, Form } from './styles';
 import MyDatePicker from '../datePicker';
-import { getFormatedTime, hydrateDate } from '../../helpers/date_helper';
+import { getFormattedTime, hydrateDate } from '../../helpers/date_helper';
 
 const customStyles = {
   content: {
@@ -21,24 +21,36 @@ const customStyles = {
   }
 };
 
-const MyModal = ({ onSave, isOpen, closeModal }) => {
+const MyModal = ({ onSave, isOpen, closeModal, reminder }) => {
   const [title, setTitle] = useState('');
   const [city, setCity] = useState('');
   const [date, setDate] = useState(new Date());
-  const [time, setTime] = useState(getFormatedTime());
+  const [time, setTime] = useState(getFormattedTime());
+  const [loadedData, setLoadedData] = useState(false);
+
+  // Checking if it's not an empty object
+  if (Object.keys(reminder).length && !loadedData) {
+    setTitle(reminder.title);
+    setCity(reminder.city);
+    setDate(reminder.date);
+    setTime(getFormattedTime(reminder.date));
+    setLoadedData(true);
+  }
 
   function _clearFields() {
     setTitle('');
     setCity('');
     setDate(new Date());
-    setTime(getFormatedTime());
+    setTime(getFormattedTime());
   }
 
   function _onSave(e) {
     e.preventDefault();
+    console.log({ title, city, date, time });
     const hydratedDate = hydrateDate(date, time);
+    const id = reminder.id || uuidv4();
 
-    onSave({ date: hydratedDate, title, id: uuidv4(), city });
+    onSave({ date: hydratedDate, title, id, city });
     _clearFields();
     closeModal();
   }
@@ -92,9 +104,14 @@ const MyModal = ({ onSave, isOpen, closeModal }) => {
 };
 
 MyModal.propTypes = {
+  reminder: PropTypes.object,
   isOpen: PropTypes.bool.isRequired,
   onSave: PropTypes.func,
   closeModal: PropTypes.func
+};
+
+MyModal.defaultProps = {
+  reminder: {}
 };
 
 export default MyModal;
