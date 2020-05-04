@@ -26,6 +26,22 @@ That's all! Now you can run the application
 $ yarn start
 ```
 
+## Used Tools
+
+- [axios](https://github.com/axios/axios) as http client
+- [moment](https://momentjs.com/) to deal with dates
+- [react-big-calendar](http://jquense.github.io/react-big-calendar/examples/index.html) to render the calendar on the screen
+- [react-color](https://casesandberg.github.io/react-color/) as a color picker while interacting with a reminder
+- [react-datepicker](https://reactdatepicker.com/) to add dates in a friendly way
+- [react-icons](https://react-icons.github.io/react-icons/) to have some icons easily in hands
+- [react-modal](https://react-icons.github.io/react-icons/) to display a modal almost automatically
+- [react-time-picker](https://github.com/wojtekmaj/react-time-picker#readme) to select a time friendly
+- [redux](https://redux.js.org/) as state manager
+- [redux-thunk](https://github.com/reduxjs/redux-thunk) as a middleware for async request
+- [styled-components](https://styled-components.com/docs) to styling the components
+- [uuid](https://github.com/uuidjs/uuid) to handle each reminder with a valid and random uuid
+- [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) to inspect the JS code and format automatically (with necessary plugins to integrate both libraries)
+
 ## Mandatory Features
 
 - [x] Ability to add a new "reminder" (max 30 chars) for a user entered day and time. Also, include a city.
