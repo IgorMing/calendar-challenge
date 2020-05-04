@@ -63,6 +63,8 @@ $ yarn start
 - [x] Add an extra list on the right side showing all the scheduled reminders, sorted by Date asc
 - [x] Save into local storage all the reminders interaction _(get, add, edit, delete)_. So you can reload the page and still keep seeing the data
 
+## Important Notes
+
 > **Important note[1]:** I know the importance of automated tests to an application, but I left that implementation to the end, and I started having problems to make jest running well, so I decided to delete that for now. Just clarifying, I have experience with automated tests (unit, integration, e2e), but I enforced a lot in this challenge in the code quality, and organizing the structure, so I hope that's enough. I'm sorry!
 
 > **Important note [2]:** I wasn't able to implement the weather based on the filled city, because the API wasn't responding as expected. I received error 401, then, I tried to put the example request directly, which was also not succeeded (for CORS problems). I added an image below showing the error
